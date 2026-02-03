@@ -23,7 +23,8 @@ public class GradeCalculator {
         System.out.println("=== 성적 학점 계산기 ===");
         // 향상된 for문으로 배열의 각 점수를 순회하며 학점 출력
         for (int score : scores) {
-            System.out.println("점수: " + score + " → 학점: " + calculateGrade(score));
+            String grade = calculateGrade(score);
+            System.out.printf("%3d점 → %2s 학점%n", score, grade);
         }
     }
 }
