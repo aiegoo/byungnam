@@ -1,5 +1,31 @@
 # [AIBE5] 이병남 - Java Programming Assignments
 
+## Page No.70 - 성적 계산기 (Grade Calculator)
+
+### 📋 Assignment: Average Calculator Grade
+
+**파일**: [src/GradeCalculator.java](src/GradeCalculator.java)
+
+성적 점수에 따라 학점을 계산하는 프로그램
+
+**요구사항**:
+- 95점 이상: A+
+- 90점 이상: A
+- 85점 이상: B+
+- 80점 이상: B
+- 70점 이상: C
+- 60점 이상: D
+- 60점 미만: F
+
+**실행 방법**:
+```bash
+cd src
+javac GradeCalculator.java
+java GradeCalculator
+```
+
+---
+
 ## Page No.69 - 조건문 실습
 
 ### 📋 과제 목록
@@ -75,6 +101,22 @@ java Calculator
 
 각 과제마다 comprehensive test suite가 제공됩니다.
 
+### Test 0: GradeCalculatorTest (Page 70)
+**파일**: [src/GradeCalculatorTest.java](src/GradeCalculatorTest.java)
+
+- 35개 테스트 케이스
+- 모든 학점 범주 테스트 (A+, A, B+, B, C, D, F)
+- 경계값 테스트 (95, 94, 90, 89, 85, 84, 80, 79, 70, 69, 60, 59)
+- 유효하지 않은 입력 테스트
+- 100% 테스트 통과
+
+**실행**:
+```bash
+cd src
+javac GradeCalculatorTest.java
+java GradeCalculatorTest
+```
+
 ### Test 1: AmusementParkFeeTest
 **파일**: [src/AmusementParkFeeTest.java](src/AmusementParkFeeTest.java)
 
@@ -111,12 +153,13 @@ java BuildingFloorTest
 
 - 40개 테스트 케이스
 - if문 구현 테스트 (10개)
-- switch문 구현 테스트 (10개)
-- 일관성 테스트: if vs switch (16개)
-- 에러 처리 테스트 (6개)
-- 100% 테스트 통과
-
-**실행**:
+- Page | Assignment | Test File | Total Tests | Passed | Success Rate |
+|------|-----------|-----------|-------------|--------|--------------|
+| 70 | Grade Calculator | GradeCalculatorTest | 35 | 35 | 100% |
+| 69 | Assignment 1 | AmusementParkFeeTest | 23 | 23 | 100% |
+| 69 | Assignment 2 | BuildingFloorTest | 10 | 10 | 100% |
+| 69 | Assignment 3 | CalculatorTest | 40 | 40 | 100% |
+| | **Total** | | **108** | **108
 ```bash
 cd src
 javac CalculatorTest.java
