@@ -1,5 +1,17 @@
 # [AIBE5] 이병남 - Java Programming Assignments
 
+## 📊 Progress Tracker
+
+### Day 03 - 2026년 2월 3일
+
+| Page | Assignment | Status |
+|------|------------|--------|
+| 86 | MultiplicationTable (전체 구구단) | ✅ |
+| 86 | EvenDanOnly (짝수 단만) | ✅ |
+| 86 | LimitedMultiplier (삼각형 패턴) | ✅ |
+
+---
+
 ## Page No.70 - 성적 계산기 (Grade Calculator)
 
 ### 📋 Assignment: Average Calculator Grade
