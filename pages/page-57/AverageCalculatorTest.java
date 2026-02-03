@@ -41,8 +41,8 @@ public class AverageCalculatorTest {
         
         //given: 수학100, 나머지 80
         //when: 평균 계산
-        //then: 90.0
-        test(100, 80, 80, 80, 90.0, "수학만 만점");
+        //then: 85.0
+        test(100, 80, 80, 80, 85.0, "수학만 만점");
         
         System.out.println();
     }
