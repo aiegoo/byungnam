@@ -47,6 +47,24 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     if git cherry-pick $COMMIT; then
         echo "✅ Cherry-picked successfully"
         
+        # Copy assignment files to src/ directory
+        echo "📁 Copying assignment files to src/..."
+        mkdir -p src
+        
+        # Find all .java files in pages/page-XX/ (excluding test files)
+        for file in pages/page-$PAGE/*.java; do
+            if [[ -f "$file" ]] && [[ ! "$file" =~ Test\.java$ ]]; then
+                filename=$(basename "$file")
+                cp "$file" "src/$filename"
+                echo "  → Copied $filename to src/"
+            fi
+        done
+        
+        # Stage and commit the src/ updates
+        git add src/
+        git commit -m "chore: update src/ with page-$PAGE assignments" --no-verify
+        echo "✅ Updated src/ directory"
+        
         # Push to origin
         if git push origin main; then
             echo "✅ Pushed to origin/main"
