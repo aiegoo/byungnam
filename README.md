@@ -2,13 +2,17 @@
 
 ## 📊 Progress Tracker
 
-### Day 03 - 2026년 2월 3일
-
-| Page | Assignment | Status |
-|------|------------|--------|
-| 86 | MultiplicationTable (전체 구구단) | ✅ |
-| 86 | EvenDanOnly (짝수 단만) | ✅ |
-| 86 | LimitedMultiplier (삼각형 패턴) | ✅ |
+| Date | Page | Assignment | Status |
+|------|------|------------|--------|
+| 2026-02-03 | 86 | MultiplicationTable (전체 구구단) | ✅ |
+| 2026-02-03 | 86 | EvenDanOnly (짝수 단만) | ✅ |
+| 2026-02-03 | 86 | LimitedMultiplier (삼각형 패턴) | ✅ |
+| 2026-02-03 | 57 | CelToFah (온도 변환) | ✅ |
+| 2026-02-03 | 57 | AverageCalculator (4과목 평균) | ✅ |
+| 2026-02-03 | 66 | GradeCalculator (학점 계산) | ✅ |
+| 2026-02-03 | 69 | AmusementParkFee (놀이공원 입장료) | ✅ |
+| 2026-02-03 | 69 | BuildingFloor (건물 층수 계산) | ✅ |
+| 2026-02-03 | 69 | Calculator (계산기) | ✅ |
 
 ---
 
