@@ -5,6 +5,9 @@
 
 | Date | Page | Assignment | Status |
 |------|------|------------|--------|
+| 2026-02-04 | 91 | AverageCalculatorGradeWhile (While 반복문) | ✅ |
+| 2026-02-04 | 91 | AverageCalculatorGradeFor (For 반복문) | ✅ |
+| 2026-02-04 | 91 | AverageCalculatorGradeInfiniteLoop (무한 반복) | ✅ |
 | 2026-02-03 | 86 | MultiplicationTable (전체 구구단) | ✅ |
 | 2026-02-03 | 86 | EvenDanOnly (짝수 단만) | ✅ |
 | 2026-02-03 | 86 | LimitedMultiplier (삼각형 패턴) | ✅ |
