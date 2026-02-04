@@ -3,6 +3,7 @@
 ## 📊 Progress Tracker
 [googleDrive](https://drive.google.com/file/d/1xE7trQ5FvXaiv0EKTMw9rxzyKC9YWpu8/view?usp=sharing)
 
+[for submission](https://github.com/emilyClassroom/back-end-aiegoo)
 | Date | Page | Assignment | Status |
 |------|------|------------|--------|
 | 2026-02-04 | 91 | AverageCalculatorGradeWhile (While 반복문) | ✅ |
