@@ -1,6 +1,16 @@
 // Scanner 클래스를 가져오기: 사용자 입력을 받기 위해 필요
 import java.util.Scanner;
 
+// ============================================================
+// Page 91: Page 66의 if-else 조건문 로직 + 무한 반복문(Infinite Loop) 결합
+// ============================================================
+// 학습 목표:
+// 1. Page 66에서 배운 if-else 조건문으로 학점 판단 (calculateGrade 메서드)
+// 2. while(true) 무한 반복문으로 사용자가 원하는 만큼 학점 계산 반복
+// 3. break와 continue로 반복 흐름 제어하는 방법 이해
+// 4. 사용자 명령어(keep/quit)로 프로그램 제어하기
+// ============================================================
+
 // AverageCalculatorGradeInfiniteLoop 클래스 정의: 무한 반복문으로 학점 계산
 public class AverageCalculatorGradeInfiniteLoop {
     
