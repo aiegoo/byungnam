@@ -6,6 +6,11 @@
 [for submission](https://github.com/emilyClassroom/back-end-aiegoo)
 | Date | Page | Assignment | Status |
 |------|------|------------|--------|
+| 2026-02-05 | 121 | AverageCalculatorArray (배열 사용) | ✅ |
+| 2026-02-05 | 121 | AverageCalculatorList (List 사용) | ✅ |
+| 2026-02-05 | 121 | AverageCalculatorMap (Map 사용) | ✅ |
+| 2026-02-05 | 121 | ObjectCopy1 (얼치복사) | ✅ |
+| 2026-02-05 | 121 | ObjectCopy2 (깊은복사) | ✅ |
 | 2026-02-04 | 91 | AverageCalculatorGradeWhile (While 반복문) | ✅ |
 | 2026-02-04 | 91 | AverageCalculatorGradeFor (For 반복문) | ✅ |
 | 2026-02-04 | 91 | AverageCalculatorGradeInfiniteLoop (무한 반복) | ✅ |
