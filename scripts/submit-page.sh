@@ -1,6 +1,12 @@
 #!/bin/bash
 # Submit specific page assignment using cherry-pick
 # Usage: ./scripts/submit-page.sh <page-number>
+#
+# ⚠️ CRITICAL GUARDRAIL:
+# - There must be EXACTLY ONE feat(page-XX) commit per page
+# - The feat commit must contain ALL assignments with MINIMAL/CLEAN code
+# - Detailed comments should be in SEPARATE docs(page-XX) commits AFTER feat
+# - This ensures clean submissions to origin while keeping detailed notes on work branch
 
 PAGE=$1
 
@@ -16,15 +22,43 @@ if ! git rev-parse --git-dir > /dev/null 2>&1; then
     exit 1
 fi
 
-# Find the feat commit for this page
+# Find ALL feat commits for this page
 echo "🔍 Looking for feat commit for page-$PAGE..."
-COMMIT=$(git log work --oneline --grep="feat(page-$PAGE)" --format="%H" | head -1)
+COMMITS=$(git log work --oneline --grep="feat(page-$PAGE)" --format="%H")
+COMMIT_COUNT=$(echo "$COMMITS" | grep -c '^' 2>/dev/null || echo 0)
+✅ Found exactly ONE feat commit (correct!):"
+git log --oneline -1 $COMMIT
+echo ""
 
-if [ -z "$COMMIT" ]; then
-    echo "❌ No feat commit found for page-$PAGE"
-    echo "💡 Make sure you have a commit with message: feat(page-$PAGE): ..."
+# Show what files changed
+echo "📂 Files in this commit:"
+FILES=$(git show --name-only --pretty="" $COMMIT)
+echo "$FILES"
+echo ""
+
+# Count non-test Java files (assignments)
+ASSIGNMENT_COUNT=$(echo "$FILES" | grep "pages/page-$PAGE/.*\.java$" | grep -v "Test\.java$" | wc -l | tr -d ' ')
+echo "📊 Assignment files: $ASSIGNMENT_COUNT"
+# ⚠️ GUARDRAIL CHECK: Ensure exactly ONE feat commit
+if [ "$COMMIT_COUNT" -gt 1 ]; then
+    echo "⚠️  WARNING: Found $COMMIT_COUNT feat commits for page-$PAGE"
+    echo "❌ GUARDRAIL VIOLATION: There should be EXACTLY ONE feat commit per page!"
+    echo ""
+    echo "📋 Found commits:"
+    git log work --oneline --grep="feat(page-$PAGE)"
+    echo ""
+    echo "🔧 To fix this, you should:"
+    echo "   1. Squash multiple feat commits into ONE commit, OR"
+    echo "   2. Use 'git rebase -i' to combine them, OR"
+    echo "   3. Create a new single feat commit with all assignments"
+    echo ""
+    echo "💡 Remember: ONE feat commit = ALL assignments + CLEAN code"
+    echo "   Then add detailed comments in separate docs(page-$PAGE) commits"
     exit 1
 fi
+
+# Get the single feat commit
+COMMIT=$(echo "$COMMITS" | head -1)
 
 echo "📝 Found commit:"
 git log --oneline -1 $COMMIT
