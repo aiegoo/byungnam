@@ -26,19 +26,7 @@ fi
 echo "🔍 Looking for feat commit for page-$PAGE..."
 COMMITS=$(git log work --oneline --grep="feat(page-$PAGE)" --format="%H")
 COMMIT_COUNT=$(echo "$COMMITS" | grep -c '^' 2>/dev/null || echo 0)
-✅ Found exactly ONE feat commit (correct!):"
-git log --oneline -1 $COMMIT
-echo ""
 
-# Show what files changed
-echo "📂 Files in this commit:"
-FILES=$(git show --name-only --pretty="" $COMMIT)
-echo "$FILES"
-echo ""
-
-# Count non-test Java files (assignments)
-ASSIGNMENT_COUNT=$(echo "$FILES" | grep "pages/page-$PAGE/.*\.java$" | grep -v "Test\.java$" | wc -l | tr -d ' ')
-echo "📊 Assignment files: $ASSIGNMENT_COUNT"
 # ⚠️ GUARDRAIL CHECK: Ensure exactly ONE feat commit
 if [ "$COMMIT_COUNT" -gt 1 ]; then
     echo "⚠️  WARNING: Found $COMMIT_COUNT feat commits for page-$PAGE"
@@ -57,16 +45,28 @@ if [ "$COMMIT_COUNT" -gt 1 ]; then
     exit 1
 fi
 
+# Verify we found exactly one commit
+if [ "$COMMIT_COUNT" -eq 0 ]; then
+    echo "❌ No feat(page-$PAGE) commit found on work branch"
+    exit 1
+fi
+
 # Get the single feat commit
 COMMIT=$(echo "$COMMITS" | head -1)
 
-echo "📝 Found commit:"
+echo "✅ Found exactly ONE feat commit (correct!):"
 git log --oneline -1 $COMMIT
 echo ""
 
 # Show what files changed
 echo "📂 Files in this commit:"
-git show --name-only --pretty="" $COMMIT
+FILES=$(git show --name-only --pretty="" $COMMIT)
+echo "$FILES"
+echo ""
+
+# Count non-test Java files (assignments)
+ASSIGNMENT_COUNT=$(echo "$FILES" | grep "pages/page-$PAGE/.*\.java$" | grep -v "Test\.java$" | wc -l | tr -d ' ')
+echo "📊 Assignment files: $ASSIGNMENT_COUNT"
 echo ""
 
 # Ask for confirmation
