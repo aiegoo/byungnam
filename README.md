@@ -6,10 +6,12 @@
 [for submission](https://github.com/emilyClassroom/back-end-aiegoo)
 | Date | Page | Assignment | Status |
 |------|------|------------|--------|
-| 2026-02-09 | 198 | Player Level System (추상 클래스) | 🚀 |
+| 2026-02-10 | 215 | Interface Implementation | 📝 |
+| 2026-02-10 | 212 | Call Center Scheduler System (인터페이스) | ✅ |
+| 2026-02-09 | 198 | Player Level System (추상 클래스) | ✅ |
 | 2026-02-09 | 184 | Customer Discount System | ✅ |
 | 2026-02-09 | 168 | Student Card Issuance | ✅ |
-| 2026-02-06 | 160-163 | Transportation System (Student, Bus, Subway, Taxi) | 🚀 |
+| 2026-02-06 | 160-163 | Transportation System (Student, Bus, Subway, Taxi) | ✅ |
 | 2026-02-06 | 148 | MyDate (날짜 유효성 검사) | ✅ |
 | 2026-02-06 | 134 | Person (인적 정보 관리) | ✅ |
 | 2026-02-05 | 121 | AverageCalculatorArray (배열 사용) | ✅ |
@@ -30,7 +32,76 @@
 | 2026-02-03 | 69 | BuildingFloor (건물 층수 계산) | ✅ |
 | 2026-02-03 | 69 | Calculator (계산기) | ✅ |
 
+---212 - 고객센터 전화 배분 스케줄러
+
+### 📋 Assignment: Call Center Scheduler with Strategy Pattern
+
+**파일**:
+- [pages/page-212/Scheduler.java](pages/page-212/Scheduler.java) - 인터페이스
+- [pages/page-212/RoundRobin.java](pages/page-212/RoundRobin.java) - 순서대로 배분
+- [pages/page-212/LeastJob.java](pages/page-212/LeastJob.java) - 최소 대기열 배분
+- [pages/page-212/PriorityAllocation.java](pages/page-212/PriorityAllocation.java) - 우선순위 배분
+- [pages/page-212/AgentGetCall.java](pages/page-212/AgentGetCall.java) - 상담원 주도 배분
+- [pages/page-212/SchedulerTest.java](pages/page-212/SchedulerTest.java) - 대화형 테스트
+- [pages/page-212/SchedulerTestSuite.java](pages/page-212/SchedulerTestSuite.java) - 자동화 테스트
+
+**요구사항**:
+- `Scheduler` 인터페이스 정의 (getNextCall, sendCallToAgent)
+- 4가지 배분 정책 구현:
+  1. **RoundRobin**: 상담원에게 순서대로 균등 배분
+  2. **LeastJob**: 대기 건수가 가장 적은 상담원에게 배분
+  3. **PriorityAllocation**: 고객 등급에 따라 우선 배분 (VIP → 상담원 0, 우수 → 1, 일반 → 2)
+  4. **AgentGetCall**: 상담원이 능동적으로 전화를 가져감
+- `static` 변수 활용하여 상태 공유
+- 인터페이스와 다형성 활용
+
+**실행 방법**:
+```bash
+cd pages/page-212
+javac *.java
+
+# 대화형 테스트 (R/L/P/A 입력)
+java SchedulerTest
+
+# 자동화 테스트 실행
+java SchedulerTestSuite
+```
+
+**테스트 결과**:
+```
+===== Scheduler Test Suite =====
+
+Test 1: RoundRobin distributes calls evenly in sequence
+✅ PASS: RoundRobin distributes in sequential order
+
+Test 2: LeastJob finds agent with shortest queue
+✅ PASS: LeastJob tracks and uses queue length
+
+Test 3: PriorityAllocation assigns by customer grade
+✅ PASS: PriorityAllocation assigns by customer grade
+
+Test 4: AgentGetCall allows agents to pull calls
+✅ PASS: AgentGetCall allows agent-driven call handling
+
+Test 5: All schedulers implement Scheduler interface
+✅ PASS: All schedulers implement Scheduler interface
+
+===== Test Results =====
+Pass: 5
+Fail: 0
+Total: 5
+```
+
+**핵심 개념**:
+- Interface implementation (인터페이스 구현)
+- Strategy pattern (전략 패턴)
+- Polymorphism (다형성)
+- Static variables for shared state
+- Interactive vs automated testing
+
 ---
+
+## Page No.
 
 ## Page No.198 - 추상 클래스 레벨 시스템
 
@@ -425,7 +496,7 @@ choco/
     ├── BuildingFloor.java            # 과제 2: 건물 층별 안내
     ├── BuildingFloorTest.java        # 과제 2 테스트
     ├── Calculator.java               # 과제 3: 사칙연산 계산기
-    └── CalculatorTest.java           # 과제 3 테스트
+    └── CalculatorTest.java10          # 과제 3 테스트
 ```
 
 ---
