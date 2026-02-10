@@ -6,6 +6,9 @@
 [for submission](https://github.com/emilyClassroom/back-end-aiegoo)
 | Date | Page | Assignment | Status |
 |------|------|------------|--------|
+| 2026-02-09 | 198 | Player Level System (추상 클래스) | 🚀 |
+| 2026-02-09 | 184 | Customer Discount System | ✅ |
+| 2026-02-09 | 168 | Student Card Issuance | ✅ |
 | 2026-02-06 | 160-163 | Transportation System (Student, Bus, Subway, Taxi) | 🚀 |
 | 2026-02-06 | 148 | MyDate (날짜 유효성 검사) | ✅ |
 | 2026-02-06 | 134 | Person (인적 정보 관리) | ✅ |
@@ -26,6 +29,104 @@
 | 2026-02-03 | 69 | AmusementParkFee (놀이공원 입장료) | ✅ |
 | 2026-02-03 | 69 | BuildingFloor (건물 층수 계산) | ✅ |
 | 2026-02-03 | 69 | Calculator (계산기) | ✅ |
+
+---
+
+## Page No.198 - 추상 클래스 레벨 시스템
+
+### 📋 Assignment: Player Level Strategy
+
+**파일**:
+- [pages/page-198/PlayerLevel.java](pages/page-198/PlayerLevel.java)
+- [pages/page-198/BeginnerLevel.java](pages/page-198/BeginnerLevel.java)
+- [pages/page-198/AdvancedLevel.java](pages/page-198/AdvancedLevel.java)
+- [pages/page-198/SuperLevel.java](pages/page-198/SuperLevel.java)
+- [pages/page-198/Player.java](pages/page-198/Player.java)
+- [pages/page-198/PlayerTest.java](pages/page-198/PlayerTest.java)
+- [pages/page-198/PlayerTestSuite.java](pages/page-198/PlayerTestSuite.java)
+
+**요구사항**:
+- 추상 클래스 `PlayerLevel`이 run/jump/turn/go 템플릿 메서드 제공
+- Beginner/Advanced/Super 레벨이 각각 가능한 동작만 수행하고 불가 시 메시지 출력
+- `Player`는 현재 레벨을 전략으로 보관하며 `upgradeLevel()`로 동적 교체
+- `go(int count)`는 run 1회 → jump count회 → turn 1회를 고정 시나리오로 수행
+
+**실행 방법**:
+```bash
+cd pages/page-198
+javac *.java
+java PlayerTest
+```
+
+**테스트 스위트**:
+```bash
+java PlayerTestSuite
+```
+
+**Status**: 🚀 Ready (테스트 통과, 원본 저장소 제출 대기)
+
+---
+
+## Page No.184 - 고객 등급별 할인 시스템
+
+### 📋 Assignment: Customer Discount & Bonus
+
+**파일**:
+- [pages/page-184/Customer.java](pages/page-184/Customer.java)
+- [pages/page-184/VIPCustomer.java](pages/page-184/VIPCustomer.java)
+- [pages/page-184/CustomerTest.java](pages/page-184/CustomerTest.java)
+- [pages/page-184/CustomerTestSuite.java](pages/page-184/CustomerTestSuite.java)
+
+**요구사항**:
+- 기본 고객은 SILVER 등급, 1% 포인트 적립
+- VIP 고객은 5% 포인트 적립 + 10% 즉시 할인
+- 박새로이(일반)와 윤세리(VIP)의 결제 금액 출력 시나리오 구현
+- 테스트 스위트에서 할인/포인트 누적/레벨별 동작 검증
+
+**실행 방법**:
+```bash
+cd pages/page-184
+javac *.java
+java CustomerTest
+```
+
+**테스트 스위트**:
+```bash
+java CustomerTestSuite
+```
+
+**Status**: ✅ Submitted to origin/main
+
+---
+
+## Page No.168 - 학생 카드 발급
+
+### 📋 Assignment: Student Serial & Card Number
+
+**파일**:
+- [pages/page-168/Student.java](pages/page-168/Student.java)
+- [pages/page-168/StudentTest.java](pages/page-168/StudentTest.java)
+- [pages/page-168/StudentTestSuite.java](pages/page-168/StudentTestSuite.java)
+
+**요구사항**:
+- `serialNum`을 private static으로 보관하고 생성될 때마다 증가
+- 학번은 serialNum에서 파생, 학생카드 번호는 학번 + 100으로 계산
+- getter/setter로만 접근 가능하도록 캡슐화
+- 두 학생(연주미, 이지안) 생성 후 카드 번호 출력
+
+**실행 방법**:
+```bash
+cd pages/page-168
+javac Student.java StudentTest.java
+java StudentTest
+```
+
+**테스트 스위트**:
+```bash
+java StudentTestSuite
+```
+
+**Status**: ✅ Submitted to origin/main
 
 ---
 
@@ -393,4 +494,4 @@ javac CalculatorTest.java && java CalculatorTest
 
 ---
 
-**Last Updated**: 2026년 2월 6일
+**Last Updated**: 2026년 2월 9일
