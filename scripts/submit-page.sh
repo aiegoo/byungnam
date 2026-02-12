@@ -1,6 +1,6 @@
 #!/bin/bash
 # Submit specific page assignment using cherry-pick
-# Usage: ./scripts/submit-page.sh <page-number>
+# Usage: ./scripts/submit-page.sh <page-number> [-y|--yes]
 #
 # ⚠️ CRITICAL GUARDRAIL:
 # - There must be EXACTLY ONE feat(page-XX) commit per page
@@ -9,11 +9,28 @@
 # - This ensures clean submissions to origin while keeping detailed notes on work branch
 
 PAGE=$1
+AUX_FLAG=$2
 
 if [ -z "$PAGE" ]; then
-    echo "❌ Usage: ./scripts/submit-page.sh <page-number>"
+    echo "❌ Usage: ./scripts/submit-page.sh <page-number> [-y|--yes]"
     echo "   Example: ./scripts/submit-page.sh 66"
     exit 1
+fi
+
+# Determine whether we should auto-confirm (useful for automation)
+AUTO_CONFIRM=false
+
+if [ "$AUX_FLAG" = "-y" ] || [ "$AUX_FLAG" = "--yes" ]; then
+    AUTO_CONFIRM=true
+fi
+
+if [ "$SUBMIT_AUTO_CONFIRM" = "1" ] || [ "$SUBMIT_AUTO_CONFIRM" = "true" ]; then
+    AUTO_CONFIRM=true
+fi
+
+# If stdin is not a TTY (non-interactive), auto-confirm to avoid accidental "n"
+if [ ! -t 0 ]; then
+    AUTO_CONFIRM=true
 fi
 
 # Make sure we're in a git repo
@@ -69,11 +86,28 @@ ASSIGNMENT_COUNT=$(echo "$FILES" | grep "pages/page-$PAGE/.*\.java$" | grep -v "
 echo "📊 Assignment files: $ASSIGNMENT_COUNT"
 echo ""
 
-# Ask for confirmation
-read -p "Cherry-pick this commit to main and push to origin? (y/n) " -n 1 -r
-echo ""
+# Ask for confirmation (or auto-confirm when running non-interactively)
+PROCEED=false
 
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [ "$AUTO_CONFIRM" = true ]; then
+    echo "🤖 Auto-confirm enabled. Proceeding without manual confirmation."
+    PROCEED=true
+else
+    while true; do
+        read -r -p "Cherry-pick this commit to main and push to origin? (y/n) " RESPONSE
+        if [ -z "$RESPONSE" ] || [[ $RESPONSE =~ ^[Yy]$ ]]; then
+            PROCEED=true
+            break
+        elif [[ $RESPONSE =~ ^[Nn]$ ]]; then
+            echo "❌ Submission cancelled"
+            exit 0
+        else
+            echo "Please answer with 'y' or 'n'."
+        fi
+    done
+fi
+
+if [ "$PROCEED" = true ]; then
     # Switch to main
     git checkout main
     
@@ -119,6 +153,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     # Go back to work branch
     git checkout work
     echo "🔄 Back on work branch"
-else
-    echo "❌ Submission cancelled"
 fi
